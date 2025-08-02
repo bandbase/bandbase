@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login | Etsy for Bands</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <h1>Login or Sign Up</h1>
+
+  <div id="auth-container">
+    <div id="login-form">
+      <p>Enter your email to receive a magic link to sign in.</p>
+      <form id="magic-link-form">
+        <input type="email" id="email-input" placeholder="your@email.com" required />
+        <button type="submit">Send Magic Link</button>
+      </form>
+    </div>
+
+    <div id="user-status" style="display: none;">
+      <p>You are logged in as: <strong id="user-email"></strong></p>
+      <button id="logout-button">Logout</button>
+    </div>
+  </div>
+
+  <script type="module" src="/js/auth.js"></script>
+</body>
+</html>
