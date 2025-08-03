@@ -1,14 +1,8 @@
-// In: /api/pages/home.js
+// /api/pages/home.js
 
-import ejs from 'ejs';
-import path from 'path';
-import { createClient } from '@supabase/supabase-js';
-
-// This client is initialized on the server, so it can use regular env vars
-const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_ANON_KEY);
+import { supabase, renderPage } from '../../lib/ssr-helpers.js';
 
 export default async function handler(request, response) {
-  // Fetch all stores from the database
   const { data: stores, error } = await supabase
     .from('stores')
     .select('name, slug, description');
@@ -18,9 +12,5 @@ export default async function handler(request, response) {
     return response.status(500).send('Error fetching stores');
   }
 
-  const templatePath = path.join(process.cwd(), 'templates', 'home.ejs');
-  const html = await ejs.renderFile(templatePath, { stores: stores });
-
-  response.setHeader('Content-Type', 'text/html');
-  response.status(200).send(html);
+  await renderPage(response, 'home.ejs', { stores: stores });
 }

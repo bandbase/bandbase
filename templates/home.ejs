@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
-<head><title>Etsy for Bands</title><link rel="stylesheet" href="/css/style.css"></head>
+<head>
+  <title>Etsy for Bands</title>
+</head>
 <body>
   <h1>Welcome to the Marketplace!</h1>
   <a href="/auth">Login / Manage</a>
@@ -20,5 +22,13 @@
       <p>No stores available yet.</p>
     <% } %>
   </ul>
+
+  <script>
+  window.SUPABASE_CONFIG = {
+    url: "<%= supabaseUrl %>",
+    key: "<%= supabaseAnonKey %>"
+  };
+</script>
+<script type="module" src="/js/global.js"></script>
 </body>
 </html>
