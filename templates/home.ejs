@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Etsy for Bands</title>
+  <title>Bandbase</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <link rel="icon" href="./img/favicon.svg">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/f39d/proto/css/proto_layout.min.css" />
 </head>
 <body>
-  <h1>Welcome to the Marketplace!</h1>
-  <a href="/auth">Login / Manage</a>
+<div class="container grid" 
+     style="--grid-cols: 1fr;
+            --grid-rows: 60px 1fr 60px;
+            --grid-areas: 
+              'top' 
+              'center'
+              'bottom';
+            --grid-gap: 8px;
+            min-height:100dvh;
+            width:100vw">
 
-  <h2>Featured Stores</h2>
-  <ul>
+  <div class="top">
+    <%- include('partials/_toolbar'); %>
+  </div>
+  <div class="center">
+    <h1>Welcome to Bandbase</h1>
+    <div>
     <% if (stores && stores.length) { %>
       <% stores.forEach(store => { %>
-        <li>
+        <article>
           <a href="/store/<%= store.slug %>">
             <strong><%= store.name %></strong>
           </a>
           <p><%= store.description %></p>
-        </li>
+        </article>
       <% }); %>
     <% } else { %>
       <p>No stores available yet.</p>
     <% } %>
-  </ul>
+    </div>
+  </div>
+  <div class="bottom">Footer legal</div>
+  
+  </div>
+  
 
   <script>
   window.SUPABASE_CONFIG = {
