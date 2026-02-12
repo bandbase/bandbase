@@ -83,10 +83,12 @@ console.log(`
 <script>
 const james = document.getElementById('james');
 const audio = document.getElementById('void');
+audio.volume = 0.5;
+
 animate(james, { 
   opacity: 0,
-  translateX: '58%',
-  scale:2,
+  translateX: '75%',
+  scale:2.5,
   duration: 0, 
   onComplete: () => {
     animate(james, {
@@ -98,7 +100,7 @@ animate(james, {
 function open() {
   animate(james, { 
     translateX: '0%', 
-    scale:1,
+    scale:1.2,
     duration: 2000,
     onComplete: () => {
       animate('.letters', {
